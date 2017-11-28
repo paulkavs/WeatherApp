@@ -25,11 +25,11 @@ public class Application implements CommandLineRunner {
 		Date date = new Date(2017, 11, 12);
 		repository.deleteAll();
 
-		// save a couple of customers
+		// save a couple of earthquakes
 		repository.save(new Earthquake(123, "120km NW Ireland", 3.0, 122.2, 233.4, date));
 		repository.save(new Earthquake(124, "180km SW Ireland", 3.5, 142.2, 204.7, date));
 
-		// fetch all customers
+		// fetch all earthquakes
 		System.out.println("Earthquake found with findAll():");
 		System.out.println("-------------------------------");
 		for (Earthquake earthquake : repository.findAll()) {
@@ -45,6 +45,12 @@ public class Application implements CommandLineRunner {
 		System.out.println("Earthquake found with findByMagnitude('3.5'):");
 		System.out.println("--------------------------------");
 		for (Earthquake earthquake : repository.findByMagnitude(3.5)){
+			System.out.println(earthquake);
+		}
+		
+		System.out.println("Earthquakes found with Date:");
+		System.out.println("--------------------------------");
+		for (Earthquake earthquake : repository.findByDate(date)){
 			System.out.println(earthquake);
 		}
 
